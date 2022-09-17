@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
@@ -11,9 +12,7 @@ class Database {
 
   connect() {
     mongoose
-      .connect(
-        'mongodb+srv://admin:TFRcNdghUHC1KZVU@twitterclonecluster.by2jq.mongodb.net/TwitterCloneDB?retryWrites=true&w=majority'
-      )
+      .connect(process.env.MONGO_URI)
       .then(() => {
         console.log('DATABASE connection Successful');
       })
